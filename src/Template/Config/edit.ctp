@@ -21,6 +21,7 @@
     <fieldset>
         <legend><?= __('Edit Config') ?></legend>
         <?php
+            echo $this->Form->control('id');
             echo $this->Form->control('name');
             echo $this->Form->control('displayname');
             echo $this->Form->control('value');

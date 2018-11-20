@@ -77,3 +77,4 @@ Router::scope('/', function (RouteBuilder $routes) {
      */
     $routes->fallbacks(DashedRoute::class);
 });
+$routes->connect('/config', array('controller' => 'Config', 'action' => 'index'));

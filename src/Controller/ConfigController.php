@@ -13,6 +13,12 @@ use App\Controller\AppController;
 class ConfigController extends AppController
 {
 
+    public function initialize()
+    {
+        // Always enable the MyUtils Helper
+        $this->layouts = 'admin';
+    }
+
     /**
      * Index method
      *
@@ -20,6 +26,7 @@ class ConfigController extends AppController
      */
     public function index()
     {
+        $this->layout = 'admin';
         $config = $this->paginate($this->Config);
 
         $this->set(compact('config'));

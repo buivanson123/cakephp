@@ -12,7 +12,7 @@
 </nav>
 <div class="config index large-9 medium-8 columns content">
     <h3><?= __('Config') ?></h3>
-    <table cellpadding="0" cellspacing="0">
+    <table class="table table-striped custab" cellpadding="0" cellspacing="0">
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
@@ -28,9 +28,16 @@
                 <td><?= h($config->name) ?></td>
                 <td><?= h($config->displayname) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $config->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $config->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $config->id], ['confirm' => __('Are you sure you want to delete # {0}?', $config->id)]) ?>
+
+                    <?= $this->Html->link('<span class="	glyphicon glyphicon-eye-open">
+                        </span>', ['action' => 'view'],['escape' => false,'title' => __('View'), $config->id]) ?>
+
+                    <?= $this->Html->link('<span class="glyphicon glyphicon-edit">
+                        </span>', ['action' => 'edit'],['escape' => false,'title' => __('edit'), $config->id]) ?>
+
+                    <?= $this->Html->link('<span class="glyphicon glyphicon-remove">
+                        </span>', ['action' => 'delete'],['escape' => false,'title' => __('delete'), $config->id,'confirm' => __('Bạn có chắc muốn xóa.?', $config->id)]) ?>
+
                 </td>
             </tr>
             <?php endforeach; ?>

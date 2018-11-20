@@ -44,11 +44,6 @@ class ConfigTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('id')
-            ->requirePresence('id', 'create')
-            ->notEmpty('id');
-
-        $validator
             ->scalar('name')
             ->maxLength('name', 255)
             ->requirePresence('name', 'create')
