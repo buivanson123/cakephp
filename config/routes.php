@@ -22,7 +22,7 @@ use Cake\Core\Plugin;
 use Cake\Routing\RouteBuilder;
 use Cake\Routing\Router;
 use Cake\Routing\Route\DashedRoute;
-
+use App\Middleware\AdminMiddleware;
 /**
  * The default class to use for all routes
  *
@@ -47,14 +47,15 @@ use Cake\Routing\Route\DashedRoute;
 Router::defaultRouteClass(DashedRoute::class);
 
 Router::scope('/', function (RouteBuilder $routes) {
-
     $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+//
+//    $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
 
-    $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
-
-    $routes->fallbacks(DashedRoute::class);
+//    $routes->fallbacks(DashedRoute::class);
 });
 
-Router::prefix('admin',function (RouteBuilder $routers){
-
+Router::prefix('admin','', function ($routes) {
+    $routes->registerMiddleware('AdminMiddleware', new AdminMiddleware());
+    $routes->applyMiddleware('AdminMiddleware');
+    $routes->fallbacks(DashedRoute::class);
 });
